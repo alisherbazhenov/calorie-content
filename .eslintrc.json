@@ -1,0 +1,39 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"plugin:react/recommended",
+		"airbnb",
+		"prettier",
+		"plugin:react/jsx-runtime"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": ["react", "jsx-a11y"], // Добавлен плагин jsx-a11y
+	"rules": {
+		"indent": ["error", "tab"],
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+		"react/prop-types": 0,
+		"react/destructuring-assignment": [0],
+		"import/no-extraneous-dependencies": [
+			"error",
+			{
+				"devDependencies": [
+					"**/*.test.js",
+					"**/*.spec.js",
+					"scripts/**/*.js",
+					"config/**/*.js"
+				],
+				"optionalDependencies": false,
+				"peerDependencies": false
+			}
+		]
+	}
+}
