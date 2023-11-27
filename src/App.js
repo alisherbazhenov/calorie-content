@@ -1,8 +1,13 @@
-import './App.css';
+import './css/App.css';
+import MainPage from './components/MainPage';
+import Footer from './components/Footer';
 
 function App() {
 	return (
-		<div className="App" />
+		<div className="App">
+			<MainPage />
+			<Footer />
+		</div>
 	);
 }
 
