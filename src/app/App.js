@@ -1,13 +1,8 @@
-import MainPage from '../components/mainPage/MainPage';
-import Footer from '../components/footer/Footer';
+import { AppRoutes } from '../routes';
 
-function App() {
+export function App() {
   return (
-    <>
-      <MainPage />
-      <Footer />
-    </>
+    <AppRoutes />
   );
 }
 
-export default App;

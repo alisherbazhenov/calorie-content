@@ -1,12 +1,13 @@
 /* eslint-disable */
-import styles from './MainPage.module.css'
+import styles from './MainPage.module.scss'
 import restaurants from '../../data/restaurants.json'
 import { ReactComponent as Array } from '../../icons/array.svg'
+import { Link } from 'react-router-dom'
 
-const MainPage = () => {
+export const MainPage = () => {
   const mainItem = restaurants.map((item) => (
     <li key={item.id} className={styles.item}>
-      <a href="#" className={styles.link}>
+      <Link to={item.to} className={styles.link}>
         <div className={styles.block}>
           <div className={styles.text}>
             <h2 className={styles.subtitle}>{item.name}</h2>
@@ -15,7 +16,7 @@ const MainPage = () => {
           <Array className={styles.array} />
         </div>
         <img className={styles.icon} src={item.img} alt={item.alt} />
-      </a>
+      </Link>
     </li>
   ))
 
@@ -37,5 +38,3 @@ const MainPage = () => {
     </div>
   )
 }
-
-export default MainPage

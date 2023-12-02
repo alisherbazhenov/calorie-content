@@ -1,28 +1,18 @@
-/* eslint-disable */
-import styles from './Footer.module.css'
-import { ReactComponent as Home } from '../../icons/home1.svg'
-import { ReactComponent as Wishlist } from '../../icons/wishlist.svg'
-import { ReactComponent as Dislike } from '../../icons/dislike.svg'
+import { NavLink } from 'react-router-dom'
+import styles from './Footer.module.scss'
+import { items } from './consts'
 
-const Footer = () => {
-  const items = [
-    { id: 'home', icon: <Home />, href: '#', title: 'Ссылка на главную' },
-    {
-      id: 'wishlist',
-      icon: <Wishlist />,
-      href: '#',
-      title: 'Ссылка на страницу списка',
-    },
-    { id: 'Dislike', icon: <Dislike />, href: '#', title: 'Кнопка лайка' },
-  ]
-
-  const listItems = items.map((item) => (
-    <li key={item.id} className={styles.item}>
-      <a className={styles.link} href={item.href} title={item.title}>
-        {item.icon}
-      </a>
-    </li>
-  ))
+export const Footer = () => {
+  const listItems = items.map((item) => {
+    const setActive = ({ isActive }) => (isActive ? item.iconFill : item.icon)
+    return (
+      <li key={item.id} className={styles.item}>
+        <NavLink className={styles.link} to={item.to} title={item.title}>
+          {setActive}
+        </NavLink>
+      </li>
+    )
+  })
 
   return (
     <footer className={styles.footer}>
@@ -30,5 +20,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer
