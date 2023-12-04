@@ -1,0 +1,1 @@
+export { Baklazhan } from './Baklazhan'
