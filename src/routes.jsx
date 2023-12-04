@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom'
-import { MainPage } from './components/Mainpage'
-import { Baklazhan } from './components/Baklazhan/Baklazhan'
+import { MainPage } from './pages/MainPage'
+import { Baklazhan } from './components/Baklazhan'
 import { Veranda } from './components/Veranda'
-import { NotFoundPage } from './components/NotFoundPage/NotFoundPage'
-import { Wishlist } from './components/Wishlist/Wishlist'
-import { Diet } from './components/Diet/Diet'
+import { NotFoundPage } from './components/NotFoundPage'
+import { Wishlist } from './components/Wishlist'
+import { Diet } from './components/Diet'
 import { Dish } from './components/Dish'
-import { Layout } from './components/Layout/Layout'
+import { Layout } from './layouts/Layout'
 
 export const AppRoutes = () => (
   <Routes>

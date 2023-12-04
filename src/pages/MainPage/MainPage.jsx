@@ -21,7 +21,7 @@ export const MainPage = () => {
   ))
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.content}>
       <div className={styles.top}>
         <img
           className={styles.img}

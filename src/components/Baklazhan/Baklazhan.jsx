@@ -2,7 +2,7 @@
 import styles from './Baklazhan.module.scss'
 
 export const Baklazhan = () => (
-  <container className={styles.container}>
+  <div className={styles.container}>
     <h1 className={styles.title}>Baklazhan</h1>
     <ul className={styles.list}>
       <li className={styles.item}>
@@ -27,5 +27,5 @@ export const Baklazhan = () => (
         </a>
       </li>
     </ul>
-  </container>
+  </div>
 )

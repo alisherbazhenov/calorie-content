@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom'
-import { Footer } from '../Footer'
+import { Footer } from '../../components/Footer'
 import styles from './Layout.module.scss'
 
 export const Layout = () => (
-  <main className={styles.main}>
+  <div className={styles.wrapper}>
     <Outlet />
     <Footer />
-  </main>
+  </div>
 )
