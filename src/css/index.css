@@ -83,6 +83,16 @@ img {
   margin: 0;
 }
 
+/*Убрать полосу прокрутки для всей страницы*/
+::-webkit-scrollbar {
+  /* width: 0; */
+  display: none;
+}
+
+.scrolling-wrapper {
+  -webkit-overflow-scrolling: touch;
+}
+
 /* 
 .container {
 	padding-left: calc(50% - 600px);

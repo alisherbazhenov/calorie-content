@@ -9,8 +9,8 @@ export const Salads = () => (
         <NavLink className={styles.link} to={item.to}>
           <img className={styles.image} src={item.img} alt={item.alt} />
           <div className={styles.dish}>
-            <p className={styles.dish__name}>{item.name}</p>
-            <p className={styles.dish__calorie}>{item.kcal} Ккал</p>
+            <p className={styles.dishName}>{item.name}</p>
+            <p className={styles.dishCalorie}>{item.kcal} Ккал</p>
           </div>
         </NavLink>
       </li>

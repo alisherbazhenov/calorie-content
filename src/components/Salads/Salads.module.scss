@@ -13,10 +13,6 @@
 	background-color: #d6f7f7;
 }
 
-// .item:nth-child(odd) {
-// 	background-color: #ffdddd;
-// }
-
 .link {
 	width: 100%;
 }
@@ -35,13 +31,13 @@
 	padding: 10px 15px;
 }
 
-.dish__name {
+.dishName {
 	color: #474545;
 	font-size: 14px;
 	font-weight: 400;
 }
 
-.dish__calorie {
+.dishCalorie {
 	align-self: center;
 	color: #333;
 	font-size: 18px;
