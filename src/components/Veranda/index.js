@@ -1,1 +1,0 @@
-export { Veranda } from './Veranda'

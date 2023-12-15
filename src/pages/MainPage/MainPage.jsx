@@ -1,13 +1,12 @@
-/* eslint-disable */
-import styles from './MainPage.module.scss'
-import restaurants from '../../data/restaurants.json'
-import { ReactComponent as Array } from '../../icons/array.svg'
 import { Link } from 'react-router-dom'
+import styles from './MainPage.module.scss'
+import data from '../../data/data.json'
+import { ReactComponent as Array } from '../../icons/array.svg'
 
 export const MainPage = () => {
-  const mainItem = restaurants.map((item) => (
+  const mainItem = data.map((item) => (
     <li key={item.id} className={styles.item}>
-      <Link to={item.to} className={styles.link}>
+      <Link to={`/restaurants/${item.id}`} className={styles.link}>
         <div className={styles.block}>
           <div className={styles.text}>
             <h2 className={styles.subtitle}>{item.name}</h2>

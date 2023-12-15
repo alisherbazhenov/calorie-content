@@ -1,26 +1,24 @@
 import { Route, Routes } from 'react-router-dom'
 import { MainPage } from './pages/MainPage'
-import { Baklazhan } from './components/Baklazhan'
-import { Veranda } from './components/Veranda'
+import { Restaurant } from './pages/Restaurant'
 import { NotFoundPage } from './components/NotFoundPage'
 import { Wishlist } from './components/Wishlist'
 import { Diet } from './components/Diet'
-import { Dish } from './components/Dish'
+import { Dish } from './pages/Dish'
 import { Layout } from './layouts/Layout'
-import { Salads } from './components/Salads'
-import { Soups } from './components/Soups'
+import { Category } from './pages/Category'
 
 export const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Layout />}>
       <Route index element={<MainPage />} />
-      <Route path="baklazhan" element={<Baklazhan />}>
-        <Route index element={<Salads />} />
-        <Route path="salads" element={<Salads />} />
-        <Route path="soups" element={<Soups />} />
+      <Route path="/restaurants/:restaurantId" element={<Restaurant />}>
+        <Route path=":categoryId" element={<Category />} />
       </Route>
-      <Route path="dish" element={<Dish />} />
-      <Route path="veranda" element={<Veranda />} />
+      <Route
+        path="/restaurants/:restaurantId/:categoryId/:dishId"
+        element={<Dish />}
+      />
       <Route path="wishlist" element={<Wishlist />} />
       <Route path="diet" element={<Diet />} />
       <Route path="*" element={<NotFoundPage />} />
