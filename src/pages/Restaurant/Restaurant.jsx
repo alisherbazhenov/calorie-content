@@ -1,21 +1,31 @@
-import { useEffect } from 'react'
+/* eslint-disable */
+import { useEffect, useState } from 'react'
 import { NavLink, useParams, Outlet, useNavigate } from 'react-router-dom'
 import styles from './Restaurant.module.scss'
-import data from '../../data/data.json'
+import { getRestaurant } from '../../api.js/restaurants'
+import { SkeletonRest } from '../../components/SkeletonRest/SkeletonRest'
 
 export const Restaurant = () => {
   const params = useParams()
-  const restaurant = data.find((item) => item.id === params.restaurantId)
-  const { categories } = restaurant
-
-  const { categoryId } = useParams()
-  const navigate = useNavigate()
+  const [restaurant, setRestaurant] = useState(null)
 
   useEffect(() => {
-    if (!categoryId) {
-      navigate(categories[0].id)
+    const getData = async () => {
+      try {
+        const result = await getRestaurant(params.restaurantId)
+        setRestaurant(result)
+      } catch (err) {
+        console.log('err', err)
+      }
     }
-  }, [categoryId])
+    getData()
+  }, [])
+
+  if (!restaurant) {
+    return <SkeletonRest />
+  }
+
+  const { categories } = restaurant
 
   return (
     <div className={styles.container}>
@@ -36,7 +46,6 @@ export const Restaurant = () => {
           ))}
         </ul>
       </nav>
-
       <Outlet />
     </div>
   )

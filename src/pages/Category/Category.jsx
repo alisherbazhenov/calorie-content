@@ -1,12 +1,44 @@
-import { Link, useParams } from 'react-router-dom'
+/* eslint-disable */
+import { useEffect, useState } from 'react'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import styles from './Category.module.scss'
-import data from '../../data/data.json'
+import { getCategories } from '../../api.js/restaurants'
+import { SkeletonDishes } from '../../components/SkeletonDishes'
 
 export const Category = () => {
   const params = useParams()
-  const restaurant = data.find((item) => item.id === params.restaurantId)
-  const { categories } = restaurant
-  const { dishes } = categories.find((item) => item.id === params.categoryId)
+  const [category, setCategory] = useState(null)
+
+  // const { categoryId } = useParams()
+  // console.log(categoryId)
+  // const navigate = useNavigate()
+
+  // useEffect(() => {
+  //   if (!categoryId) {
+  //     navigate(categories[0].id)
+  //   }
+  // }, [categoryId])
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await getCategories({
+          restaurantId: params.restaurantId,
+          categoryId: params.categoryId,
+        })
+        setCategory(result)
+      } catch (err) {
+        console.log('err', err)
+      }
+    }
+    getData()
+  }, [])
+
+  if (!category) {
+    return <SkeletonDishes />
+  }
+
+  const { dishes } = category
 
   return (
     <ul className={styles.list}>

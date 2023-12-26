@@ -1,21 +1,39 @@
+/* eslint-disable */
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Dish.module.scss'
 import { ReactComponent as ArrayBack } from '../../icons/arrayBack.svg'
-import data from '../../data/data.json'
+import { getDish } from '../../api.js/restaurants'
+import { SkeletonDish } from '../../components/SkeletonDish/SkeletonDish'
 
 export const Dish = () => {
+  const navigate = useNavigate()
   const params = useParams()
-  const restaurant = data.find((item) => item.id === params.restaurantId)
-  const categories = restaurant.categories.find(
-    (item) => item.id === params.categoryId,
-  )
-  const dish = categories.dishes.find((item) => item.id === params.dishId)
+  const [dish, setDish] = useState(null)
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await getDish({
+          restaurantId: params.restaurantId,
+          categoryId: params.categoryId,
+          dishId: params.dishId,
+        })
+        setDish(result)
+      } catch (err) {
+        console.log('err', err)
+      }
+    }
+    getData()
+  }, [])
 
   if (!dish) {
-    return <div>Такого блюда к сожалению нет!</div>
+    return <SkeletonDish />
   }
 
-  const navigate = useNavigate()
+  // if (!dish.name) {
+  //   return <div>Такого блюда к сожалению нет!</div>
+  // }
 
   return (
     <div className={styles.container}>
