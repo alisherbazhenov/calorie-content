@@ -1,23 +1,17 @@
 /* eslint-disable */
 import { useEffect, useState } from 'react'
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import styles from './Category.module.scss'
-import { getCategories } from '../../api.js/restaurants'
+import { getCategories } from '../../api/restaurants'
 import { SkeletonDishes } from '../../components/SkeletonDishes'
+import { Error } from '../../errors/Error'
+import { NoData } from '../../errors/NoData/NoData'
 
 export const Category = () => {
   const params = useParams()
   const [category, setCategory] = useState(null)
-
-  // const { categoryId } = useParams()
-  // console.log(categoryId)
-  // const navigate = useNavigate()
-
-  // useEffect(() => {
-  //   if (!categoryId) {
-  //     navigate(categories[0].id)
-  //   }
-  // }, [categoryId])
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const getData = async () => {
@@ -28,14 +22,24 @@ export const Category = () => {
         })
         setCategory(result)
       } catch (err) {
-        console.log('err', err)
+        setError(err)
+      } finally {
+        setIsLoading(false)
       }
     }
     getData()
   }, [])
 
-  if (!category) {
+  if (isLoading) {
     return <SkeletonDishes />
+  }
+
+  if (error) {
+    return <Error text={error} />
+  }
+
+  if (!category || category.length === 0) {
+    return <NoData text="Нет данных по котегориям блюд..." />
   }
 
   const { dishes } = category

@@ -45,6 +45,7 @@ export const SkeletonDish = () => (
     <div className={styles.descBlock}>
       <p className={styles.desc}></p>
       <p className={styles.desc}></p>
+      <p className={styles.desc}></p>
     </div>
     <div className={styles.title}></div>
     <div className={styles.btn}></div>

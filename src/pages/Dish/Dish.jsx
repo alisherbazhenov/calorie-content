@@ -3,13 +3,17 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Dish.module.scss'
 import { ReactComponent as ArrayBack } from '../../icons/arrayBack.svg'
-import { getDish } from '../../api.js/restaurants'
+import { getDish } from '../../api/restaurants'
 import { SkeletonDish } from '../../components/SkeletonDish/SkeletonDish'
+import { Error } from '../../errors/Error'
+import { NoData } from '../../errors/NoData/NoData'
 
 export const Dish = () => {
   const navigate = useNavigate()
   const params = useParams()
   const [dish, setDish] = useState(null)
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const getData = async () => {
@@ -21,19 +25,25 @@ export const Dish = () => {
         })
         setDish(result)
       } catch (err) {
-        console.log('err', err)
+        setError(err)
+      } finally {
+        setIsLoading(false)
       }
     }
     getData()
   }, [])
 
-  if (!dish) {
+  if (isLoading) {
     return <SkeletonDish />
   }
 
-  // if (!dish.name) {
-  //   return <div>Такого блюда к сожалению нет!</div>
-  // }
+  if (error) {
+    return <Error text={error} />
+  }
+
+  if (!dish || dish.length === 0) {
+    return <NoData text="Нет данных по блюду..." />
+  }
 
   return (
     <div className={styles.container}>

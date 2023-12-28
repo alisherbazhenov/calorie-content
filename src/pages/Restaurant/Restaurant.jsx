@@ -2,27 +2,43 @@
 import { useEffect, useState } from 'react'
 import { NavLink, useParams, Outlet, useNavigate } from 'react-router-dom'
 import styles from './Restaurant.module.scss'
-import { getRestaurant } from '../../api.js/restaurants'
+import { getRestaurant } from '../../api/restaurants'
 import { SkeletonRest } from '../../components/SkeletonRest/SkeletonRest'
+import { Error } from '../../errors/Error'
+import { NoData } from '../../errors/NoData/NoData'
 
 export const Restaurant = () => {
   const params = useParams()
+  const navigate = useNavigate()
   const [restaurant, setRestaurant] = useState(null)
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const getData = async () => {
       try {
         const result = await getRestaurant(params.restaurantId)
+        navigate(result.categories[0].id)
         setRestaurant(result)
       } catch (err) {
-        console.log('err', err)
+        setError(err)
+      } finally {
+        setIsLoading(false)
       }
     }
     getData()
   }, [])
 
-  if (!restaurant) {
+  if (isLoading) {
     return <SkeletonRest />
+  }
+
+  if (error) {
+    return <Error text={error} />
+  }
+
+  if (!restaurant || restaurant.length === 0) {
+    return <NoData text="Нет данных по ресторану..." />
   }
 
   const { categories } = restaurant

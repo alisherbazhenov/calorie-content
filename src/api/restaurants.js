@@ -5,6 +5,8 @@ export const getRestaurants = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(data)
+      // resolve(null)
+      // resolve([])
       // reject('Возникла ошибка...')
     }, 2000)
   })
@@ -15,6 +17,8 @@ export const getRestaurant = (id) => {
     setTimeout(() => {
       const promise = data.find((item) => item.id === id)
       resolve(promise)
+      // resolve(null)
+      // resolve([])
       // reject('Возникла ошибка...')
     }, 2000)
   })
@@ -26,6 +30,8 @@ export const getCategories = ({ restaurantId, categoryId }) => {
       const restaurant = data.find(item => item.id === restaurantId)
       const category = restaurant.categories.find(item => item.id === categoryId)
       resolve(category)
+      // resolve(null)
+      // resolve([])
       // reject('Возникла ошибка...')
     }, 2000)
   })
@@ -39,6 +45,8 @@ export const getDish = ({ restaurantId, categoryId, dishId }) => {
         (item) => item.id === categoryId)
       const dish = categories.dishes.find((item) => item.id === dishId)
       resolve(dish)
+      // resolve(null)
+      // resolve([])
       // reject('Возникла ошибка...')
     }, 2000)
   })
