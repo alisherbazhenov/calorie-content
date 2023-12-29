@@ -12,8 +12,8 @@ export const items = [
     id: 'wishlist',
     icon: <Wishlist />,
     iconFill: <WishlistFill />,
-    to: '/wishlist',
+    to: '/diet',
     title: 'Ссылка на страницу списка',
   },
-  { id: 'Dislike', icon: <Dislike />, iconFill: <Like />, to: '/diet', title: 'Кнопка лайка' },
+  { id: 'Dislike', icon: <Dislike />, iconFill: <Like />, to: '/wishlist', title: 'Кнопка лайка' },
 ]
