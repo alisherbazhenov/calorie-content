@@ -28,7 +28,7 @@ export const Category = () => {
       }
     }
     getData()
-  }, [])
+  }, [params.categoryId])
 
   if (isLoading) {
     return <SkeletonDishes />
