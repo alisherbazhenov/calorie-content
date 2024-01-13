@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Dish.module.scss'
 import { ReactComponent as ArrayBack } from '../../icons/arrayBack.svg'
 import { getDish } from '../../api/restaurants'
+import { LikeButton } from '../../components/LikeButton'
 import { SkeletonDish } from '../../components/SkeletonDish/SkeletonDish'
 import { Error } from '../../errors/Error'
 import { NoData } from '../../errors/NoData/NoData'
@@ -60,7 +61,7 @@ export const Dish = () => {
       <img className={styles.image} src={dish.img} alt={dish.alt} />
       <div className={styles.favorite}>
         <h3 className={styles.subtitle}>Пищевая ценность</h3>
-        <div className={styles.like} />
+        <LikeButton dish={dish} />
       </div>
 
       <ul className={styles.list}>
