@@ -13,8 +13,8 @@ export const Wishlist = () => {
   const navigate = useNavigate()
   const { wishlistItems } = useSelector((state) => state.wishlists)
 
-  const removeDishHandle = (dishId) => {
-    dispatch(removeWishItem({ id: dishId }))
+  const removeDishHandle = (item) => {
+    dispatch(removeWishItem(item))
   }
 
   const removeAllWishlist = () => {
@@ -57,7 +57,7 @@ export const Wishlist = () => {
                   <p className={styles.dishName}>{item.name}</p>
                   <p className={styles.dishCalorie}>{item.kcal} Ккал</p>
                   <button
-                    onClick={() => removeDishHandle(item.id)}
+                    onClick={() => removeDishHandle(item)}
                     type="button"
                     aria-label="like"
                     className={styles.like}
@@ -71,3 +71,14 @@ export const Wishlist = () => {
     </div>
   )
 }
+
+// либо так, либо как сейчас в коде
+// const removeDishHandle = (dishId) => {
+//   dispatch(removeWishItem({ id: dishId }))
+// }
+// ;<button
+//   onClick={() => removeDishHandle(item.id)}
+//   type="button"
+//   aria-label="like"
+//   className={styles.like}
+// />

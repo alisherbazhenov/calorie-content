@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import styles from './Dish.module.scss'
 import { ReactComponent as ArrayBack } from '../../icons/arrayBack.svg'
 import { getDish } from '../../api/restaurants'
@@ -8,13 +9,20 @@ import { LikeButton } from '../../components/LikeButton'
 import { SkeletonDish } from '../../components/SkeletonDish/SkeletonDish'
 import { Error } from '../../errors/Error'
 import { NoData } from '../../errors/NoData/NoData'
+import {
+  addToWishlist,
+  removeWishItem,
+} from '../../features/wishlists/wishSlice'
 
 export const Dish = () => {
   const navigate = useNavigate()
   const params = useParams()
+  // const { wishlistItems } = useSelector((state) => state.wishlists)
+  const dispatch = useDispatch()
   const [dish, setDish] = useState(null)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [isActive, setActive] = useState(false)
 
   useEffect(() => {
     const getData = async () => {
@@ -46,6 +54,15 @@ export const Dish = () => {
     return <NoData text="Нет данных по блюду..." />
   }
 
+  const handleAddOrRemoveDish = (dish) => {
+    if (!isActive) {
+      dispatch(addToWishlist(dish))
+    } else {
+      dispatch(removeWishItem(dish))
+    }
+    setActive(!isActive)
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.topBlock}>
@@ -61,7 +78,10 @@ export const Dish = () => {
       <img className={styles.image} src={dish.img} alt={dish.alt} />
       <div className={styles.favorite}>
         <h3 className={styles.subtitle}>Пищевая ценность</h3>
-        <LikeButton dish={dish} />
+        <LikeButton
+          isActive={isActive}
+          onClick={() => handleAddOrRemoveDish(dish)}
+        />
       </div>
 
       <ul className={styles.list}>
