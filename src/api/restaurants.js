@@ -8,7 +8,7 @@ export const getRestaurants = () => {
       // resolve(null)
       // resolve([])
       // reject('Возникла ошибка...')
-    }, 2000)
+    }, 500)
   })
 }
 
@@ -20,7 +20,7 @@ export const getRestaurant = (id) => {
       // resolve(null)
       // resolve([])
       // reject('Возникла ошибка...')
-    }, 2000)
+    }, 500)
   })
 }
 
@@ -33,7 +33,7 @@ export const getCategories = ({ restaurantId, categoryId }) => {
       // resolve(null)
       // resolve([])
       // reject('Возникла ошибка...')
-    }, 2000)
+    }, 500)
   })
 }
 
@@ -48,6 +48,6 @@ export const getDish = ({ restaurantId, categoryId, dishId }) => {
       // resolve(null)
       // resolve([])
       // reject('Возникла ошибка...')
-    }, 2000)
+    }, 500)
   })
 }

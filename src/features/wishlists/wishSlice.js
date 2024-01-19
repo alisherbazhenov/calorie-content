@@ -41,7 +41,7 @@ export const wishSlice = createSlice({
       // }
     },
     removeWishItem: (state, action) => {
-      const itemIdToRemove = action.payload.id;
+      const itemIdToRemove = action.payload;
 
       // Использую filter для создания нового массива без элемента, который нужно удалить
       const updatedWishlist = state.wishlistItems.filter(item => item.id !== itemIdToRemove);

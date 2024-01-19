@@ -17,12 +17,12 @@ import {
 export const Dish = () => {
   const navigate = useNavigate()
   const params = useParams()
-  // const { wishlistItems } = useSelector((state) => state.wishlists)
+  const { wishlistItems } = useSelector((state) => state.wishlists)
   const dispatch = useDispatch()
   const [dish, setDish] = useState(null)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-  const [isActive, setActive] = useState(false)
+  const isActive = wishlistItems.find((items) => items.id === params.dishId)
 
   useEffect(() => {
     const getData = async () => {
@@ -58,9 +58,8 @@ export const Dish = () => {
     if (!isActive) {
       dispatch(addToWishlist(dish))
     } else {
-      dispatch(removeWishItem(dish))
+      dispatch(removeWishItem(dish.id))
     }
-    setActive(!isActive)
   }
 
   return (

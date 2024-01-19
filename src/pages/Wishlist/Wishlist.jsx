@@ -57,7 +57,7 @@ export const Wishlist = () => {
                   <p className={styles.dishName}>{item.name}</p>
                   <p className={styles.dishCalorie}>{item.kcal} Ккал</p>
                   <button
-                    onClick={() => removeDishHandle(item)}
+                    onClick={() => removeDishHandle(item.id)}
                     type="button"
                     aria-label="like"
                     className={styles.like}
