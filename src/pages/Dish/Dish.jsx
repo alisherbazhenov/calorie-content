@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './Dish.module.scss'
-import { ReactComponent as ArrayBack } from '../../icons/arrayBack.svg'
+// import { ReactComponent as ArrayBack } from '../../icons/arrayBack.svg'
 import { getDish } from '../../api/restaurants'
 import { LikeButton } from '../../components/LikeButton'
 import { SkeletonDish } from '../../components/SkeletonDish/SkeletonDish'
@@ -13,11 +13,14 @@ import {
   addToWishlist,
   removeWishItem,
 } from '../../features/wishlists/wishSlice'
+import { addToDiet } from '../../features/diets/dietSlice'
 
 export const Dish = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const params = useParams()
   const { wishlistItems } = useSelector((state) => state.wishlists)
+  // const { dietItems } = useSelector((state) => state.diets)
+  // console.log(dietItems)
   const dispatch = useDispatch()
   const [dish, setDish] = useState(null)
   const [error, setError] = useState(null)
@@ -65,13 +68,13 @@ export const Dish = () => {
   return (
     <div className={styles.container}>
       <div className={styles.topBlock}>
-        <button
+        {/* <button
           onClick={() => navigate(-1)}
           type="button"
           aria-label="Вернуться"
         >
           <ArrayBack />
-        </button>
+        </button> */}
         <h2 className={styles.title}>{dish.name}</h2>
       </div>
       <img className={styles.image} src={dish.img} alt={dish.alt} />
@@ -120,7 +123,11 @@ export const Dish = () => {
       <p className={styles.thermalProcess}>
         Основной тепловой процесс: <span>{dish.cookingProcess}</span>
       </p>
-      <button className={styles.btn} type="button">
+      <button
+        onClick={() => dispatch(addToDiet(dish))}
+        className={styles.btn}
+        type="button"
+      >
         Добавить в рацион
       </button>
     </div>

@@ -3,10 +3,109 @@
 }
 
 .title {
-	margin: 0 0 25px 0;
+	margin-bottom: 20px;
 	padding: 20px 0;
-	color: #333;
-	font-size: 26px;
+	color: #3e423a;
+	font-size: 22px;
+	font-weight: 400;
+	border-bottom: 1px solid #747574;
+	margin: 0 0 25px 0;
+}
+
+.dishNav {
+	margin-bottom: 20px;
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.quantity {
+	color: #646562;
+	font-size: 20px;
+	font-weight: 300;
+}
+
+.removeAll {
+	display: block;
+	max-width: 150px;
+	min-height: 30px;
+	padding: 8px 15px;
+	border-radius: 5px;
+	background: #31d6d6;
+	color: #fff;
+	font-size: 16px;
 	font-weight: 500;
+}
+
+.item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 15px 0;
 	border-bottom: 1px solid rgb(218, 214, 214);
+}
+
+.itemLeft {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.image {
+	border-radius: 15px;
+	width: 100px;
+	height: 80px;
+}
+
+// .itemText {
+
+// }
+
+.dishName {
+	margin-bottom: 7px;
+	color: #474545;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.dishParametres {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.kcalGm {
+	color: #474545;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.bju {
+	color: #474545;
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.btns {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+
+.incrementDecrement {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 2px 5px;
+	background-color: #f2efef;
+	border-radius: 10px;
+}
+
+.dishQuantity {
+	color: #474545;
+	font-size: 16px;
+	font-weight: 400;
 }

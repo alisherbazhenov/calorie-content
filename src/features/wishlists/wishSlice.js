@@ -4,8 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const wishSlice = createSlice({
   name: 'wishlists',
   initialState: {
-    wishlistItems: localStorage.getItem('wishlistItems')
-      ? JSON.parse(localStorage.getItem('wishlistItems'))
+    wishlistItems: localStorage.getItem('wishlists')
+      ? JSON.parse(localStorage.getItem('wishlists'))
       : [],
   },
   reducers: {
@@ -13,7 +13,7 @@ export const wishSlice = createSlice({
 
       // 1 метод
       // создаю переменную со всеми параметрами блюда
-      let dishParameters = { ...action.payload };
+      const dishParameters = { ...action.payload };
 
       // Проверяю, существует ли уже это блюдо в избранном через метод some. Вернет (true/false)
       const isAlreadyAdded = state.wishlistItems.some(item => item.id === dishParameters.id);
@@ -22,7 +22,7 @@ export const wishSlice = createSlice({
       // Иначе, делаю предупреждение
       if (!isAlreadyAdded) {
         state.wishlistItems.push(dishParameters);
-        localStorage.setItem('wishlistItems', JSON.stringify(state.wishlistItems));
+        // localStorage.setItem('wishlistItems', JSON.stringify(state.wishlistItems));
       } else {
         alert('Данное блюда уже добавлено в ваш Wishlist')
       }
@@ -50,11 +50,11 @@ export const wishSlice = createSlice({
       state.wishlistItems = updatedWishlist;
 
       // Обновляю localStorage
-      localStorage.setItem('wishlistItems', JSON.stringify(updatedWishlist));
+      // localStorage.setItem('wishlistItems', JSON.stringify(updatedWishlist));
     },
-    clearAllWishlist: (state, action) => {
+    clearAllWishlist: (state) => {
       state.wishlistItems = []
-      localStorage.removeItem('wishlistItems');
+      // localStorage.removeItem('wishlistItems');
     },
   },
 });
