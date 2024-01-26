@@ -1,7 +1,6 @@
 /* eslint-disable */
-import { Link, useNavigate } from 'react-router-dom'
+// import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { ReactComponent as ArrayBack } from '../../icons/arrayBack.svg'
 import {
   removeWishItem,
   clearAllWishlist,
@@ -11,7 +10,6 @@ import { LikeButton } from '../../components/LikeButton'
 
 export const Wishlist = () => {
   const dispatch = useDispatch()
-  // const navigate = useNavigate()
   const { wishlistItems } = useSelector((state) => state.wishlists)
   const isActive = wishlistItems.find((item) => item.id === item.id)
 
@@ -28,13 +26,6 @@ export const Wishlist = () => {
   return (
     <div className={styles.container}>
       <div className={styles.topBlock}>
-        {/* <button
-          // onClick={() => navigate(-1)}
-          type="button"
-          aria-label="Вернуться"
-        >
-          <ArrayBack />
-        </button> */}
         <h2 className={styles.title}>Список любимых блюд</h2>
       </div>
       <div className={styles.dishNav}>

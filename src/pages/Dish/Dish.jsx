@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './Dish.module.scss'
 // import { ReactComponent as ArrayBack } from '../../icons/arrayBack.svg'
@@ -16,16 +16,15 @@ import {
 import { addToDiet } from '../../features/diets/dietSlice'
 
 export const Dish = () => {
-  // const navigate = useNavigate()
   const params = useParams()
   const { wishlistItems } = useSelector((state) => state.wishlists)
-  // const { dietItems } = useSelector((state) => state.diets)
-  // console.log(dietItems)
+  const { dietItems } = useSelector((state) => state.diets)
   const dispatch = useDispatch()
   const [dish, setDish] = useState(null)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-  const isActive = wishlistItems.find((items) => items.id === params.dishId)
+  const isActive = wishlistItems.find((items) => items.id === items.id)
+  const addedToDiet = dietItems.find((items) => items.id === items.id)
 
   useEffect(() => {
     const getData = async () => {
@@ -65,16 +64,13 @@ export const Dish = () => {
     }
   }
 
+  const addToDiets = (item) => {
+    dispatch(addToDiet(item))
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.topBlock}>
-        {/* <button
-          onClick={() => navigate(-1)}
-          type="button"
-          aria-label="Вернуться"
-        >
-          <ArrayBack />
-        </button> */}
         <h2 className={styles.title}>{dish.name}</h2>
       </div>
       <img className={styles.image} src={dish.img} alt={dish.alt} />
@@ -124,11 +120,11 @@ export const Dish = () => {
         Основной тепловой процесс: <span>{dish.cookingProcess}</span>
       </p>
       <button
-        onClick={() => dispatch(addToDiet(dish))}
+        onClick={() => addToDiets(dish)}
         className={styles.btn}
         type="button"
       >
-        Добавить в рацион
+        {addedToDiet ? 'Блюдо добавлено в рацион' : 'Добавить в рацион'}
       </button>
     </div>
   )

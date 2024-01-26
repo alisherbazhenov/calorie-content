@@ -1,16 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux'
+// import { PieChart, Pie, Cell } from 'recharts'
 // import { Link } from 'react-router-dom'
 import { cleareAllDiet, removeDietItem } from '../../features/diets/dietSlice'
 import { ReactComponent as DeliteButton } from '../../icons/delete.svg'
 import { ReactComponent as PlusButton } from '../../icons/plus.svg'
 import { ReactComponent as MinusButton } from '../../icons/minus.svg'
-
 import styles from './Diet.module.scss'
 
 export const Diet = () => {
   const { dietItems } = useSelector((state) => state.diets)
   const dispatch = useDispatch()
 
+  // диаграмма
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Рацион</h1>
@@ -27,6 +28,9 @@ export const Diet = () => {
           Удалить все
         </button>
       </div>
+
+      {/* диаграмма */}
+
       <ul className={styles.list}>
         {dietItems.map((item) => (
           <li key={item.id} className={styles.item}>
