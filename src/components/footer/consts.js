@@ -15,5 +15,5 @@ export const items = [
     to: '/diet',
     title: 'Ссылка на страницу списка',
   },
-  { id: 'Dislike', icon: <Dislike />, iconFill: <Like />, to: '/wishlist', title: 'Кнопка лайка' },
+  { id: 'dislike', icon: <Dislike />, iconFill: <Like />, to: '/wishlist', title: 'Кнопка лайка' },
 ]

@@ -32,21 +32,8 @@
 	align-items: center;
 }
 
-.like {
-	position: relative;
-	width: 40px;
-	height: 40px;
-	z-index: 10;
-	background-image: url(../../../src/icons/dislike.svg);
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 25px 25px;
-	cursor: pointer;
-	-webkit-tap-highlight-color: transparent;
-}
-
 .subtitle {
-	color: #3e423a;
+	color: #3b3a42;
 	font-size: 22px;
 	font-weight: 400;
 }

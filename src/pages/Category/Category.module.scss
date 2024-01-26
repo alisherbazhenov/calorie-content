@@ -13,6 +13,10 @@
 	background-color: #d6f7f7;
 }
 
+.item:nth-child(2n) {
+	background-color: #fdd;
+}
+
 .link {
 	width: 100%;
 }

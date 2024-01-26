@@ -1,19 +1,30 @@
 /* eslint-disable */
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import styles from './Dish.module.scss'
-import { ReactComponent as ArrayBack } from '../../icons/arrayBack.svg'
+// import { ReactComponent as ArrayBack } from '../../icons/arrayBack.svg'
 import { getDish } from '../../api/restaurants'
+import { LikeButton } from '../../components/LikeButton'
 import { SkeletonDish } from '../../components/SkeletonDish/SkeletonDish'
 import { Error } from '../../errors/Error'
 import { NoData } from '../../errors/NoData/NoData'
+import {
+  addToWishlist,
+  removeWishItem,
+} from '../../features/wishlists/wishSlice'
+import { addToDiet } from '../../features/diets/dietSlice'
 
 export const Dish = () => {
-  const navigate = useNavigate()
   const params = useParams()
+  const { wishlistItems } = useSelector((state) => state.wishlists)
+  const { dietItems } = useSelector((state) => state.diets)
+  const dispatch = useDispatch()
   const [dish, setDish] = useState(null)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const isActive = wishlistItems.find((items) => items.id === items.id)
+  const addedToDiet = dietItems.find((items) => items.id === items.id)
 
   useEffect(() => {
     const getData = async () => {
@@ -45,22 +56,30 @@ export const Dish = () => {
     return <NoData text="Нет данных по блюду..." />
   }
 
+  const handleAddOrRemoveDish = (dish) => {
+    if (!isActive) {
+      dispatch(addToWishlist(dish))
+    } else {
+      dispatch(removeWishItem(dish.id))
+    }
+  }
+
+  const addToDiets = (item) => {
+    dispatch(addToDiet(item))
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.topBlock}>
-        <button
-          onClick={() => navigate(-1)}
-          type="button"
-          aria-label="Вернуться"
-        >
-          <ArrayBack />
-        </button>
         <h2 className={styles.title}>{dish.name}</h2>
       </div>
       <img className={styles.image} src={dish.img} alt={dish.alt} />
       <div className={styles.favorite}>
         <h3 className={styles.subtitle}>Пищевая ценность</h3>
-        <div className={styles.like} />
+        <LikeButton
+          isActive={isActive}
+          onClick={() => handleAddOrRemoveDish(dish)}
+        />
       </div>
 
       <ul className={styles.list}>
@@ -100,8 +119,12 @@ export const Dish = () => {
       <p className={styles.thermalProcess}>
         Основной тепловой процесс: <span>{dish.cookingProcess}</span>
       </p>
-      <button className={styles.btn} type="button">
-        Добавить в рацион
+      <button
+        onClick={() => addToDiets(dish)}
+        className={styles.btn}
+        type="button"
+      >
+        {addedToDiet ? 'Блюдо добавлено в рацион' : 'Добавить в рацион'}
       </button>
     </div>
   )
