@@ -22,8 +22,10 @@ export const Dish = () => {
   const [dish, setDish] = useState(null)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-  const isActive = wishlistItems.find((items) => items.id === items.id)
-  const addedToDiet = dietItems.find((items) => items.id === items.id)
+  const isActive = wishlistItems.find((items) => items.id === dish.id)
+  const addedToDiet = dietItems.find((items) => items.id === dish.id)
+
+  console.log(addedToDiet)
 
   useEffect(() => {
     const getData = async () => {

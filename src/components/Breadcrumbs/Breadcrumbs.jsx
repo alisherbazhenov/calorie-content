@@ -13,7 +13,6 @@ export const Breadcrumbs = () => {
     .map((crumb, index, array) => {
       currentLink += `/${crumb}`
 
-      console.log(currentLink)
       return (
         <div className={styles.crumb} key={crumb}>
           {index === array.length - 1 ? (
