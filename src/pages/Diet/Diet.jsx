@@ -1,6 +1,5 @@
+/* eslint-disable */
 import { useSelector, useDispatch } from 'react-redux'
-// import { PieChart, Pie, Cell } from 'recharts'
-// import { Link } from 'react-router-dom'
 import { cleareAllDiet, removeDietItem } from '../../features/diets/dietSlice'
 import { ReactComponent as DeliteButton } from '../../icons/delete.svg'
 import { ReactComponent as PlusButton } from '../../icons/plus.svg'

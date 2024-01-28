@@ -10,7 +10,13 @@ export const dietSlice = createSlice({
     addToDiet: (state, action) => {
       const dishParameters = { ...action.payload }
 
-      state.dietItems.push(dishParameters)
+      const isDishAlreadyAdded = state.dietItems.some(item => item.id === dishParameters.id)
+
+      if (!isDishAlreadyAdded) {
+        state.dietItems.push(dishParameters)
+      } else {
+        console.log(`Блюдо ${dishParameters.id} уже добавлено в рацион!`)
+      }
     },
     removeDietItem: (state, action) => {
       const itemIdToRemove = action.payload

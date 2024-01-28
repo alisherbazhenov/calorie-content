@@ -12,6 +12,7 @@ export const MainPageItems = () => {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+
   // 1 вариант
   // useEffect(() => {
   //   getRestaurants()

@@ -11,7 +11,6 @@ export default configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat((store) => (next) => (action) => {
     const result = next(action);
     if (['wishlists/addToWishlist', 'wishlists/clearAllWishlist', 'wishlists/removeWishItem'].includes(action.type)) {
-      console.log(action.type)
       localStorage.setItem('wishlists', JSON.stringify(store.getState().wishlists.wishlistItems));
     }
     if (['diets/addToDiet', 'diets/removeDietItem', 'diets/cleareAllDiet'].includes(action.type)) {

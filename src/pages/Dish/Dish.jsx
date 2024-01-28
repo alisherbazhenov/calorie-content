@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './Dish.module.scss'
-// import { ReactComponent as ArrayBack } from '../../icons/arrayBack.svg'
 import { getDish } from '../../api/restaurants'
 import { LikeButton } from '../../components/LikeButton'
 import { SkeletonDish } from '../../components/SkeletonDish/SkeletonDish'
@@ -13,7 +12,7 @@ import {
   addToWishlist,
   removeWishItem,
 } from '../../features/wishlists/wishSlice'
-import { addToDiet } from '../../features/diets/dietSlice'
+import { addToDiet, removeDietItem } from '../../features/diets/dietSlice'
 
 export const Dish = () => {
   const params = useParams()
@@ -65,7 +64,11 @@ export const Dish = () => {
   }
 
   const addToDiets = (item) => {
-    dispatch(addToDiet(item))
+    if (!addedToDiet) {
+      dispatch(addToDiet(item))
+    } else {
+      dispatch(removeDietItem(item.id))
+    }
   }
 
   return (
@@ -124,7 +127,7 @@ export const Dish = () => {
         className={styles.btn}
         type="button"
       >
-        {addedToDiet ? 'Блюдо добавлено в рацион' : 'Добавить в рацион'}
+        {addedToDiet ? 'Убрать из рациона' : 'Добавить в рацион'}
       </button>
     </div>
   )
