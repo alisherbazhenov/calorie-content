@@ -19,6 +19,7 @@ export const Wishlist = () => {
 
   const handleAddOrRemoveDish = (dish) => {
     if (isActive) {
+      // event.preventDefault()
       dispatch(removeWishItem(dish.id))
     }
   }
@@ -46,9 +47,9 @@ export const Wishlist = () => {
           return (
             <li key={item.id} className={styles.item}>
               <div className={styles.link}>
-                {/* <Link */}
-                {/* to={`/restaurants/${item.restaurantId}/${item.categoryId}/${item.id}`} */}
-                {/* > */}
+                {/* <Link
+                  to={`/restaurants/${item.restaurantId}/${item.categoryId}/${item.id}`}
+                > */}
                 <img className={styles.image} src={item.img} alt={item.alt} />
                 {/* </Link> */}
                 <div className={styles.dish}>
@@ -61,6 +62,7 @@ export const Wishlist = () => {
                     />
                   </div>
                 </div>
+                {/* </Link> */}
               </div>
             </li>
           )
@@ -68,13 +70,4 @@ export const Wishlist = () => {
       </ul>
     </div>
   )
-}
-
-{
-  /* <button
-onClick={() => removeDishHandle(item.id)}
-type="button"
-aria-label="like"
-className={styles.like}
-/> */
 }
