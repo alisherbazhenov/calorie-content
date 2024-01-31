@@ -1,13 +1,19 @@
 /* eslint-disable */
 import { useSelector, useDispatch } from 'react-redux'
-import { cleareAllDiet, removeDietItem } from '../../features/diets/dietSlice'
-import { ReactComponent as DeliteButton } from '../../icons/delete.svg'
-import { ReactComponent as PlusButton } from '../../icons/plus.svg'
-import { ReactComponent as MinusButton } from '../../icons/minus.svg'
+import {
+  cleareAllDiet,
+  removeDietItem,
+  addToDiet,
+  removeDish,
+} from '../../features/diets/dietSlice'
 import styles from './Diet.module.scss'
+import { DecrementBtn } from '../../components/DecrementBtn/DecrementBtn'
+import { IncrementBtn } from '../../components/IncrementBtn'
+import { DeliteBtn } from '../../components/DeliteBtn/DeliteBtn'
 
 export const Diet = () => {
   const { dietItems } = useSelector((state) => state.diets)
+  // const dishAdded = dietItems.find((item) => item.id === item?.id)
   const dispatch = useDispatch()
 
   // диаграмма
@@ -52,21 +58,14 @@ export const Diet = () => {
             </div>
             <div className={styles.btns}>
               <div className={styles.incrementDecrement}>
-                <button type="button" aria-label="Уменьшить">
-                  <MinusButton />
-                </button>
-                <div className={styles.dishQuantity}>1</div>
-                <button type="button" aria-label="Увеличить">
-                  <PlusButton />
-                </button>
+                <DecrementBtn onClick={() => dispatch(removeDietItem(item))} />
+                {/* <DecrementBtn /> */}
+                <div className={styles.dishQuantity}>{item.count}</div>
+                {/* <div className={styles.dishQuantity}>{0}</div> */}
+                {/* <IncrementBtn /> */}
+                <IncrementBtn onClick={() => dispatch(addToDiet(item))} />
               </div>
-              <button
-                onClick={() => dispatch(removeDietItem(item.id))}
-                type="button"
-                aria-label="Удалить блюдо"
-              >
-                <DeliteButton />
-              </button>
+              <DeliteBtn onClick={() => dispatch(removeDish(item.id))} />
             </div>
             {/* </Link> */}
           </li>

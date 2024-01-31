@@ -31,7 +31,7 @@ export const Wishlist = () => {
       </div>
       <div className={styles.dishNav}>
         <div className={styles.quantity}>
-          Колличество блюд ({wishlistItems.length})
+          Колличество блюд ({wishlistItems?.length})
         </div>
         <button
           className={styles.removeAll}

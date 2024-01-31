@@ -91,3 +91,32 @@
 	font-size: 16px;
 	font-weight: 500;
 }
+
+.btns {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: center;
+	gap: 12px;
+	max-width: 200px;
+	margin: 0 auto;
+	padding: 10px 0;
+	background-color: #f2efef;
+	border-radius: 18px;
+}
+
+.dishQuantity {
+	color: #474545;
+	font-size: 28px;
+	font-weight: 400;
+}
+
+.minus {
+	width: 36px;
+	height: 36px;
+}
+
+.plus {
+	width: 36px;
+	height: 36px;
+}
