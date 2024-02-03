@@ -12,14 +12,16 @@ export const dietSlice = createSlice({
 
       const dishParameters = { ...action.payload }
 
-      const dishAdded = state.dietItems?.find(item => item?.id === dishParameters.id)
+      const foundDietItem = state.dietItems?.find(item => item?.id === dishParameters.id)
 
-      if (dishAdded) {
-        // Если блюдо уже в диете, увеличиваем количество
-        dishAdded.count += 1
+      if (foundDietItem) {
+
+        foundDietItem.count++
+
       } else {
-        // Если блюда нет в диете, добавляем с начальным количеством 1
+
         state.dietItems?.push({ ...dishParameters, count: 1 })
+
       }
     },
     removeDietItem: (state, action) => {
@@ -28,17 +30,21 @@ export const dietSlice = createSlice({
       const updatedDish = state.dietItems?.find((item) => item?.id === itemIdToRemove.id);
 
       if (updatedDish && updatedDish.count > 1) {
-        // Если у блюда количество больше 1, уменьшаем количество
-        updatedDish.count -= 1
+
+        updatedDish.count--
+
       } else {
-        // Если у блюда количество 1, удаляем его из диеты
+
         state.dietItems = state.dietItems?.filter((item) => item?.id !== itemIdToRemove);
+
       }
     },
     removeDish: (state, action) => {
+
       const dishToRemove = action.payload
 
       state.dietItems = state.dietItems?.filter((item) => item?.id !== dishToRemove);
+
     },
     cleareAllDiet: (state) => {
       state.dietItems = []

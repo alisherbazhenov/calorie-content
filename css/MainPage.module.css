@@ -1,0 +1,22 @@
+.top {
+  margin: -20px -20px 20px -20px;
+  background: linear-gradient(rgba(244, 242, 242, 0.802), rgba(244, 242, 240, 0.802)), url(../../../public/img/back-img.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.title {
+  margin: 0 0 20px;
+  color: #3e423a;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.img {
+  overflow: hidden;
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  max-width: 600px;
+}/*# sourceMappingURL=MainPage.module.css.map */

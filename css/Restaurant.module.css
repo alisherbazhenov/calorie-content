@@ -1,0 +1,50 @@
+.navBlock {
+  position: relative;
+}
+
+.nav {
+  margin: 0 -20px;
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  margin-bottom: 20px;
+}
+.nav::after {
+  content: "";
+  position: fixed;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.5032606793) 38%, rgb(255, 255, 255) 53%);
+}
+
+.navItem {
+  flex: 0 0 auto;
+}
+
+.navItem:not(:last-child) {
+  margin-right: 10px;
+}
+
+.navLink {
+  color: #9d9d9d;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.activeLink {
+  color: #565854;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.title {
+  margin: 0 0 15px 0;
+  padding: 20px 0;
+  color: #333;
+  font-size: 26px;
+  font-weight: 500;
+  border-bottom: 1px solid rgb(218, 214, 214);
+}/*# sourceMappingURL=Restaurant.module.css.map */

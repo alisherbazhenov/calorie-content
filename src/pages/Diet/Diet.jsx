@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { useSelector, useDispatch } from 'react-redux'
+import { MyResponsivePie } from '../../components/Chart/MyResponsivePie'
 import {
   cleareAllDiet,
   removeDietItem,
@@ -13,12 +14,10 @@ import { DeliteBtn } from '../../components/DeliteBtn/DeliteBtn'
 
 export const Diet = () => {
   const { dietItems } = useSelector((state) => state.diets)
-  // const dishAdded = dietItems.find((item) => item.id === item?.id)
   const dispatch = useDispatch()
 
-  // диаграмма
   return (
-    <div className={styles.container}>
+    <>
       <h1 className={styles.title}>Рацион</h1>
       <div className={styles.dishNav}>
         <div className={styles.quantity}>
@@ -34,7 +33,9 @@ export const Diet = () => {
         </button>
       </div>
 
-      {/* диаграмма */}
+      <div className={styles.pieChart}>
+        <MyResponsivePie />
+      </div>
 
       <ul className={styles.list}>
         {dietItems.map((item) => (
@@ -71,6 +72,6 @@ export const Diet = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   )
 }

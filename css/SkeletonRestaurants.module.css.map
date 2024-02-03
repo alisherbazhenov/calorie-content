@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/components/SkeletonRestaurants/SkeletonRestaurants.module.scss","SkeletonRestaurants.module.css"],"names":[],"mappings":"AAAA;EACC,aAAA;EACA,sBAAA;EACA,SAAA;ACCD;;ADEA;EACC,WAAA;EACA,iBAAA;EACA,mBAAA;EACA,mDAAA;EACA,gDAAA;EACA,qBAAA;EACA,iCAAA;EACA,wBAAA;EACA,mCAAA;ACCD;;ADEA;EACC;IACC,UAAA;ECCA;AACF","file":"SkeletonRestaurants.module.css"}
