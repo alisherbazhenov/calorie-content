@@ -1,9 +1,21 @@
 /* eslint-disable */
-import { useLocation, Link, useNavigate } from 'react-router-dom'
+import { useLocation, Link, useMatches } from 'react-router-dom'
 import styles from './Breadcrumbs.module.scss'
 
 export const Breadcrumbs = () => {
-  const navigate = useNavigate()
+  // let matches = useMatches()
+  // let crumbs = matches
+
+  //   .filter((match) => Boolean(match.handle?.crumb))
+  //   .map((match) => match.handle.crumb(match.data))
+
+  // return (
+  //   <div className={styles.crumb}>
+  //     {crumbs.map((crumb, index) => (
+  //       <li key={index}>{crumb}</li>
+  //     ))}
+  //   </div>
+  // )
 
   const location = useLocation()
   let currentLink = ''
@@ -12,18 +24,21 @@ export const Breadcrumbs = () => {
     .filter((crumb) => crumb !== '')
     .map((crumb, index, array) => {
       currentLink += `/${crumb}`
-
-      return (
-        <div className={styles.crumb} key={crumb}>
-          {index === array.length - 1 ? (
-            <span className={styles.spanLink}>{crumb}</span>
-          ) : (
-            <Link className={styles.link} to={currentLink}>
-              {crumb}
-            </Link>
-          )}
-        </div>
-      )
+      if (array.length === 1) {
+        return false
+      } else {
+        return (
+          <div className={styles.crumb} key={crumb}>
+            {index === array.length - 1 ? (
+              <span className={styles.spanLink}>{crumb}</span>
+            ) : (
+              <Link className={styles.link} to={currentLink}>
+                {crumb}
+              </Link>
+            )}
+          </div>
+        )
+      }
     })
 
   return <div className={styles.breadCrumbs}>{crumbs}</div>

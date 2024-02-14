@@ -1,88 +1,9 @@
 /* eslint-disable */
 import { ResponsivePie } from '@nivo/pie'
-import { useSelector } from 'react-redux'
-import { data } from './data'
+import { useData } from './useData'
 
 export const MyResponsivePie = () => {
-  const { dietItems } = useSelector((state) => state.diets)
-
-  // достаю суммы необходимых величин
-  // сумма общего веса всех блюд
-  const sumOfGm = dietItems.reduce((accumulator, currentValue) => {
-    return (
-      accumulator +
-      (Number(currentValue.gm) * currentValue.count
-        ? Number(currentValue.gm) * currentValue.count
-        : 0)
-    )
-  }, 0)
-
-  // сумма всех жиров
-  const sumOfFat = dietItems.reduce((accumulator, currentValue) => {
-    return (
-      accumulator +
-      (Number(currentValue.fat) * currentValue.count
-        ? Number(currentValue.fat) * currentValue.count
-        : 0)
-    )
-  }, 0)
-
-  // сумма всех белков
-  const sumOfProtein = dietItems.reduce((accumulator, currentValue) => {
-    return (
-      accumulator +
-      (Number(currentValue.protein) * currentValue.count
-        ? Number(currentValue.protein) * currentValue.count
-        : 0)
-    )
-  }, 0)
-
-  // сумма всех угдеводов
-  const sumOfCarbohydrates = dietItems.reduce((accumulator, currentValue) => {
-    return (
-      accumulator +
-      (Number(currentValue.carbohydrates) * currentValue.count
-        ? Number(currentValue.carbohydrates) * currentValue.count
-        : 0)
-    )
-  }, 0)
-
-  // сумма всех каллорий
-  const sumOfKcal = dietItems.reduce((accumulator, currentValue) => {
-    return (
-      accumulator +
-      (Number(currentValue.kcal) * currentValue.count
-        ? Number(currentValue.kcal) * currentValue.count
-        : 0)
-    )
-  }, 0)
-
-  // Поиск id с дальнейшим прсисвоением новых значений
-  const dataGm = data.find((item) => item.id === 'вес')
-  const dataKcal = data.find((item) => item.id === 'калл.')
-  const dataProtein = data.find((item) => item.id === 'белки')
-  const dataFat = data.find((item) => item.id === 'жиры')
-  const dataCarbohydrates = data.find((item) => item.id === 'углеводы')
-
-  if (dataGm) {
-    dataGm.value = sumOfGm
-  }
-
-  if (dataKcal) {
-    dataKcal.value = sumOfKcal
-  }
-
-  if (dataProtein) {
-    dataProtein.value = sumOfProtein
-  }
-
-  if (dataFat) {
-    dataFat.value = sumOfFat
-  }
-
-  if (dataCarbohydrates) {
-    dataCarbohydrates.value = sumOfCarbohydrates
-  }
+  const data = useData()
 
   return (
     <ResponsivePie

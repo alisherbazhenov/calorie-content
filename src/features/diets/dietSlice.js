@@ -35,7 +35,7 @@ export const dietSlice = createSlice({
 
       } else {
 
-        state.dietItems = state.dietItems?.filter((item) => item?.id !== itemIdToRemove);
+        state.dietItems = state.dietItems?.filter((item) => item?.id !== itemIdToRemove.id);
 
       }
     },

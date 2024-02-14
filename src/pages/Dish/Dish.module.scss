@@ -94,13 +94,20 @@
 
 .btns {
 	display: flex;
+	// align-items: center;
+	// row-gap: 12px;
+	margin: 0 auto;
+	max-width: 300px;
+	justify-content: center;
+}
+
+.btnsCount {
+	display: flex;
 	align-items: center;
 	flex-direction: row;
 	justify-content: center;
 	gap: 12px;
-	max-width: 200px;
-	margin: 0 auto;
-	padding: 10px 0;
+	padding: 10px;
 	background-color: #f2efef;
 	border-radius: 18px;
 }
@@ -119,4 +126,14 @@
 .plus {
 	width: 36px;
 	height: 36px;
+}
+
+.incrementButton {
+	font-size: 18px;
+	font-weight: 400;
+	max-width: 500px;
+	padding: 12px 25px;
+	color: #fff;
+	border-radius: 25px;
+	background-color: #31d6d6;
 }

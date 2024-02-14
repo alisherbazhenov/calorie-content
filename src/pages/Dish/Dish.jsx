@@ -71,7 +71,7 @@ export const Dish = () => {
   }
 
   // const addToDiets = (item) => {
-  //   if (!addedToDiet) {
+  //   if (!dishAdded?.count) {
   //     dispatch(addToDiet(item))
   //   } else {
   //     dispatch(removeDietItem(item.id))
@@ -130,12 +130,23 @@ export const Dish = () => {
         Основной тепловой процесс: <span>{dish.cookingProcess}</span>
       </p>
       <div className={styles.btns}>
-        <DecrementBtn onClick={() => dispatch(removeDietItem(dish))} />
-        <div className={styles.dishQuantity}>
-          {dishAdded?.count ? dishAdded?.count : 0}
-        </div>
-        <IncrementBtn onClick={() => dispatch(addToDiet(dish))} />
-        <DeliteBtn onClick={() => dispatch(removeDish(dish.id))} />
+        {!dishAdded?.count ? (
+          <button
+            className={styles.incrementButton}
+            onClick={() => dispatch(addToDiet(dish))}
+          >
+            Добавить в рацион
+          </button>
+        ) : (
+          <div className={styles.btnsCount}>
+            <DecrementBtn onClick={() => dispatch(removeDietItem(dish))} />
+            <div className={styles.dishQuantity}>
+              {dishAdded?.count ? dishAdded?.count : 0}
+            </div>
+            <IncrementBtn onClick={() => dispatch(addToDiet(dish))} />
+            <DeliteBtn onClick={() => dispatch(removeDish(dish.id))} />
+          </div>
+        )}
       </div>
     </div>
   )

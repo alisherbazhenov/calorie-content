@@ -12,6 +12,7 @@ export const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Layout />}>
       <Route index element={<MainPage />} />
+      <Route path="/restaurants/" element={<MainPage />} />
       <Route path="/restaurants/:restaurantId" element={<Restaurant />}>
         <Route path=":categoryId" element={<Category />} />
       </Route>

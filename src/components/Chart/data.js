@@ -1,32 +1,28 @@
-export const data = [
-  {
+export const initialData = {
+  protein: {
     id: "белки",
     label: "белки",
-    value: '',
     color: "hsl(116, 70%, 50%)"
   },
-  {
+  fat: {
     id: "жиры",
     label: "жиры",
-    value: '',
     color: "hsl(222, 70%, 50%)"
   },
-  {
+  carbohydrates: {
     id: "углеводы",
     label: "углеводы",
-    value: '',
     color: "hsl(200, 70%, 50%)"
   },
-  {
+  kcal: {
     id: "калл.",
     label: "калл.",
     value: '',
     color: "hsl(241, 70%, 50%)"
   },
-  {
+  gm: {
     id: "вес",
     label: "вес",
-    value: '',
     color: "hsl(52, 70%, 50%)"
   }
-];
+}
