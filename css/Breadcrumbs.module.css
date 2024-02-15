@@ -1,0 +1,35 @@
+@charset "UTF-8";
+.breadCrumbs {
+  max-width: 1200px;
+  padding: 20px 0 0;
+}
+
+.crumb {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.breadCrumbs .crumb::after {
+  content: "⟩";
+  margin-left: 10px;
+}
+
+.breadCrumbs .crumb:last-child::after {
+  display: none;
+}
+
+.link {
+  font-size: 18px;
+  font-weight: 400;
+  color: #9d9d9d;
+  text-decoration: underline;
+}
+.link:hover {
+  color: #004080;
+}
+
+.spanLink {
+  font-size: 18px;
+  font-weight: 400;
+  color: #50504f;
+}/*# sourceMappingURL=Breadcrumbs.module.css.map */

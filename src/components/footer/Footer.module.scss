@@ -15,3 +15,34 @@
 	display: flex;
 	gap: 45px;
 }
+
+.item {
+	position: relative;
+}
+
+.label {
+	position: absolute;
+	right: -7px;
+	top: -5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 16px;
+	height: 16px;
+	border-radius: 50%;
+}
+
+.label span {
+	padding: 0 5px;
+	color: #fff;
+	font-size: 11px;
+	font-weight: 500;
+}
+
+.labelPink {
+	background-color: #fa7c7c;
+}
+
+.labelBlue {
+	background-color: #27e2e2;
+}

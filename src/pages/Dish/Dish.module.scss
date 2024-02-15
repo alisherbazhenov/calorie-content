@@ -1,7 +1,3 @@
-.container {
-	padding: 0 20px;
-}
-
 .topBlock {
 	padding-top: 20px;
 	display: flex;
@@ -94,4 +90,50 @@
 	color: #fff;
 	font-size: 16px;
 	font-weight: 500;
+}
+
+.btns {
+	display: flex;
+	// align-items: center;
+	// row-gap: 12px;
+	margin: 0 auto;
+	max-width: 300px;
+	justify-content: center;
+}
+
+.btnsCount {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: center;
+	gap: 12px;
+	padding: 10px;
+	background-color: #f2efef;
+	border-radius: 18px;
+}
+
+.dishQuantity {
+	color: #474545;
+	font-size: 28px;
+	font-weight: 400;
+}
+
+.minus {
+	width: 36px;
+	height: 36px;
+}
+
+.plus {
+	width: 36px;
+	height: 36px;
+}
+
+.incrementButton {
+	font-size: 18px;
+	font-weight: 400;
+	max-width: 500px;
+	padding: 12px 25px;
+	color: #fff;
+	border-radius: 25px;
+	background-color: #31d6d6;
 }

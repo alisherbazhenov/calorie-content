@@ -12,11 +12,9 @@ export const MainPage = () => {
           alt="Логотип"
         />
       </div>
-      <div className={styles.container}>
-        <div className={styles.main}>
-          <h1 className={styles.title}>Выберите ресторан</h1>
-          <MainPageItems />
-        </div>
+      <div className={styles.main}>
+        <h1 className={styles.title}>Выберите ресторан</h1>
+        <MainPageItems />
       </div>
     </div>
   )

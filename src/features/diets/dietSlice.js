@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 import { createSlice } from "@reduxjs/toolkit";
 
 export const dietSlice = createSlice({
@@ -8,16 +9,42 @@ export const dietSlice = createSlice({
   },
   reducers: {
     addToDiet: (state, action) => {
+
       const dishParameters = { ...action.payload }
 
-      state.dietItems.push(dishParameters)
+      const foundDietItem = state.dietItems?.find(item => item?.id === dishParameters.id)
+
+      if (foundDietItem) {
+
+        foundDietItem.count++
+
+      } else {
+
+        state.dietItems?.push({ ...dishParameters, count: 1 })
+
+      }
     },
     removeDietItem: (state, action) => {
-      const itemIdToRemove = action.payload
+      const itemIdToRemove = action.payload;
 
-      const updatedWishlist = state.dietItems.filter(item => item.id !== itemIdToRemove)
+      const updatedDish = state.dietItems?.find((item) => item?.id === itemIdToRemove.id);
 
-      state.dietItems = updatedWishlist
+      if (updatedDish && updatedDish.count > 1) {
+
+        updatedDish.count--
+
+      } else {
+
+        state.dietItems = state.dietItems?.filter((item) => item?.id !== itemIdToRemove.id);
+
+      }
+    },
+    removeDish: (state, action) => {
+
+      const dishToRemove = action.payload
+
+      state.dietItems = state.dietItems?.filter((item) => item?.id !== dishToRemove);
+
     },
     cleareAllDiet: (state) => {
       state.dietItems = []
@@ -25,5 +52,5 @@ export const dietSlice = createSlice({
   }
 })
 
-export const { addToDiet, removeDietItem, cleareAllDiet } = dietSlice.actions
+export const { addToDiet, removeDietItem, removeDish, cleareAllDiet } = dietSlice.actions
 export default dietSlice.reducer

@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './Dish.module.scss'
-// import { ReactComponent as ArrayBack } from '../../icons/arrayBack.svg'
 import { getDish } from '../../api/restaurants'
 import { LikeButton } from '../../components/LikeButton'
 import { SkeletonDish } from '../../components/SkeletonDish/SkeletonDish'
@@ -13,7 +12,14 @@ import {
   addToWishlist,
   removeWishItem,
 } from '../../features/wishlists/wishSlice'
-import { addToDiet } from '../../features/diets/dietSlice'
+import {
+  addToDiet,
+  removeDietItem,
+  removeDish,
+} from '../../features/diets/dietSlice'
+import { DecrementBtn } from '../../components/DecrementBtn/DecrementBtn'
+import { IncrementBtn } from '../../components/IncrementBtn'
+import { DeliteBtn } from '../../components/DeliteBtn/DeliteBtn'
 
 export const Dish = () => {
   const params = useParams()
@@ -23,8 +29,8 @@ export const Dish = () => {
   const [dish, setDish] = useState(null)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-  const isActive = wishlistItems.find((items) => items.id === items.id)
-  const addedToDiet = dietItems.find((items) => items.id === items.id)
+  const isActive = wishlistItems.find((items) => items.id === dish?.id)
+  const dishAdded = dietItems.find((items) => items.id === dish?.id)
 
   useEffect(() => {
     const getData = async () => {
@@ -64,9 +70,13 @@ export const Dish = () => {
     }
   }
 
-  const addToDiets = (item) => {
-    dispatch(addToDiet(item))
-  }
+  // const addToDiets = (item) => {
+  //   if (!dishAdded?.count) {
+  //     dispatch(addToDiet(item))
+  //   } else {
+  //     dispatch(removeDietItem(item.id))
+  //   }
+  // }
 
   return (
     <div className={styles.container}>
@@ -119,13 +129,25 @@ export const Dish = () => {
       <p className={styles.thermalProcess}>
         Основной тепловой процесс: <span>{dish.cookingProcess}</span>
       </p>
-      <button
-        onClick={() => addToDiets(dish)}
-        className={styles.btn}
-        type="button"
-      >
-        {addedToDiet ? 'Блюдо добавлено в рацион' : 'Добавить в рацион'}
-      </button>
+      <div className={styles.btns}>
+        {!dishAdded?.count ? (
+          <button
+            className={styles.incrementButton}
+            onClick={() => dispatch(addToDiet(dish))}
+          >
+            Добавить в рацион
+          </button>
+        ) : (
+          <div className={styles.btnsCount}>
+            <DecrementBtn onClick={() => dispatch(removeDietItem(dish))} />
+            <div className={styles.dishQuantity}>
+              {dishAdded?.count ? dishAdded?.count : 0}
+            </div>
+            <IncrementBtn onClick={() => dispatch(addToDiet(dish))} />
+            <DeliteBtn onClick={() => dispatch(removeDish(dish.id))} />
+          </div>
+        )}
+      </div>
     </div>
   )
 }
