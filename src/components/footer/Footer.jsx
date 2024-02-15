@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import styles from './Footer.module.scss'
@@ -45,9 +45,9 @@ export const Footer = () => {
           return (
             <li key={item.id} className={styles.item}>
               {label.count > 0 && (
-                <div className={label.styles}>
+                <Link to={item.to} className={label.styles}>
                   <span>{label.count}</span>
-                </div>
+                </Link>
               )}
               <NavLink className={styles.link} to={item.to} title={item.title}>
                 {getIcon}
