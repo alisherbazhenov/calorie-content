@@ -4,38 +4,25 @@
     "es2021": true
   },
   "extends": [
-    "plugin:react/recommended",
-    "airbnb",
-    "prettier",
-    "plugin:react/jsx-runtime"
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": "latest",
-    "sourceType": "module"
+    "project": "./tsconfig.json"
   },
-  "plugins": ["react", "jsx-a11y"], // Добавлен плагин jsx-a11y
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "prettier",
+    "import"
+  ],
   "rules": {
-    "indent": ["error", 2],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prop-types": 0,
-    "react/destructuring-assignment": [0],
-    "import/prefer-default-export": "off",
-    "react/function-component-definition": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": [
-          "**/*.test.js",
-          "**/*.spec.js",
-          "scripts/**/*.js",
-          "config/**/*.js"
-        ],
-        "optionalDependencies": false,
-        "peerDependencies": false
-      }
-    ]
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
+    "react/prop-types": "off"
   }
 }
