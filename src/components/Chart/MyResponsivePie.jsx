@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { ResponsivePie } from '@nivo/pie'
 import { useData } from './useData'
 

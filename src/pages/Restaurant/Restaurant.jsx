@@ -48,14 +48,9 @@ export const Restaurant = () => {
       <h1 className={styles.title}>{restaurant.name}</h1>
       <nav className={styles.navBlock}>
         <ul className={styles.nav}>
-          {categories.map((item) => (
+          {categories.map(item => (
             <li key={item.id} className={styles.navItem}>
-              <NavLink
-                to={item.id}
-                className={({ isActive }) =>
-                  isActive ? styles.activeLink : styles.navLink
-                }
-              >
+              <NavLink to={item.id} className={({ isActive }) => (isActive ? styles.activeLink : styles.navLink)}>
                 {item.title}
               </NavLink>
             </li>

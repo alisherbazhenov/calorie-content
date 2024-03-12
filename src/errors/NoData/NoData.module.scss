@@ -1,31 +1,31 @@
 .error {
-	margin: 0 auto;
-	padding: 30px;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	gap: 15px;
-	align-items: center;
-	height: 400px;
-	background-color: #8fe9e9;
-	box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.07);
+  margin: 0 auto;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  height: 400px;
+  background-color: #8fe9e9;
+  box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.07);
 }
 
 .text {
-	padding: 20px;
-	color: #fff;
-	font-weight: bold;
-	font-size: 34px;
+  padding: 20px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 34px;
 }
 
 .btn {
-	margin: 0 auto;
-	display: block;
-	width: 160px;
-	height: 40px;
-	border-radius: 30px;
-	background: rgb(255, 174, 174);
-	color: #fff;
-	font-size: 16px;
-	font-weight: 500;
+  margin: 0 auto;
+  display: block;
+  width: 160px;
+  height: 40px;
+  border-radius: 30px;
+  background: rgb(255, 174, 174);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
 }

@@ -1,1 +1,0 @@
-export { DeliteBtn } from './DeliteBtn'

@@ -1,8 +1,7 @@
-/* eslint-disable */
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import styles from './MainPageItems.module.scss'
 import { ReactComponent as Array } from '../../../src/icons/array.svg'
+import styles from './MainPageItems.module.scss'
 import { getRestaurants } from '../../api/restaurants'
 import { SkeletonRestaurants } from '../SkeletonRestaurants/SkeletonRestaurants'
 import { Error } from '../../errors/Error'
@@ -53,7 +52,7 @@ export const MainPageItems = () => {
 
   return (
     <ul className={styles.list}>
-      {data.map((item) => (
+      {data.map(item => (
         <li key={item.id} className={styles.item}>
           <Link to={`/restaurants/${item.id}`} className={styles.link}>
             <div className={styles.block}>

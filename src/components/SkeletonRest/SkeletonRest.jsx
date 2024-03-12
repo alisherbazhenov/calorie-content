@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import styles from './SkeletonRest.module.scss'
 
 export const SkeletonRest = () => (

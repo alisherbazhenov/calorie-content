@@ -16,10 +16,7 @@ export const AppRoutes = () => (
       <Route path="/restaurants/:restaurantId" element={<Restaurant />}>
         <Route path=":categoryId" element={<Category />} />
       </Route>
-      <Route
-        path="/restaurants/:restaurantId/:categoryId/:dishId"
-        element={<Dish />}
-      />
+      <Route path="/restaurants/:restaurantId/:categoryId/:dishId" element={<Dish />} />
       <Route path="wishlist" element={<Wishlist />} />
       <Route path="diet" element={<Diet />} />
       <Route path="*" element={<NotFoundPage />} />

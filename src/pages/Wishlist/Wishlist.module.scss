@@ -1,92 +1,92 @@
 .topBlock {
-	margin-bottom: 20px;
-	padding: 20px 0;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 20px;
-	border-bottom: 1px solid #747574;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #747574;
 }
 
 .title {
-	margin: 0;
-	color: #3e423a;
-	font-size: 22px;
-	font-weight: 400;
+  margin: 0;
+  color: #3e423a;
+  font-size: 22px;
+  font-weight: 400;
 }
 
 .dishNav {
-	margin-bottom: 20px;
-	display: flex;
-	gap: 15px;
-	align-items: center;
-	justify-content: space-between;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .quantity {
-	color: #646562;
-	font-size: 20px;
-	font-weight: 300;
+  color: #646562;
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .removeAll {
-	display: block;
-	max-width: 150px;
-	min-height: 30px;
-	padding: 8px 15px;
-	border-radius: 5px;
-	background: #31d6d6;
-	color: #fff;
-	font-size: 16px;
-	font-weight: 500;
+  display: block;
+  max-width: 150px;
+  min-height: 30px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  background: #31d6d6;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .list {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 .item {
-	min-height: 200px;
-	overflow: hidden;
-	grid-column: span 2;
-	border-radius: 15px;
-	box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.07);
-	background-color: #d6f7f7;
+  min-height: 200px;
+  overflow: hidden;
+  grid-column: span 2;
+  border-radius: 15px;
+  box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.07);
+  background-color: #d6f7f7;
 }
 
 .item:nth-child(2n) {
-	background-color: #fdd;
+  background-color: #fdd;
 }
 
 .link {
-	width: 100%;
+  width: 100%;
 }
 
 .image {
-	object-fit: cover;
+  object-fit: cover;
 }
 
 .dish {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	gap: 15px;
-	min-height: 100px;
-	margin: 0;
-	padding: 10px 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  min-height: 100px;
+  margin: 0;
+  padding: 10px 15px;
 }
 
 .dishName {
-	color: #474545;
-	font-size: 14px;
-	font-weight: 400;
+  color: #474545;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .btnRemove {
-	position: absolute;
-	bottom: 10px;
-	right: 10px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }

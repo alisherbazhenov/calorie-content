@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { NavLink, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -6,22 +5,18 @@ import styles from './Footer.module.scss'
 import { items } from './consts'
 
 export const Footer = () => {
-  const { dietItems } = useSelector((state) => state.diets)
-  const { wishlistItems } = useSelector((state) => state.wishlists)
+  const { dietItems } = useSelector(state => state.diets)
+  const { wishlistItems } = useSelector(state => state.wishlists)
 
   const sumOfCounts = dietItems.reduce((accumulator, currentValue) => {
-    return (
-      accumulator +
-      (currentValue && currentValue.count ? currentValue.count : 0)
-    )
+    return accumulator + (currentValue && currentValue.count ? currentValue.count : 0)
   }, 0)
 
   return (
     <footer className={styles.footer}>
       <ul className={styles.list}>
-        {items.map((item) => {
-          const getIcon = ({ isActive }) =>
-            isActive ? item.iconFill : item.icon
+        {items.map(item => {
+          const getIcon = ({ isActive }) => (isActive ? item.iconFill : item.icon)
 
           let label = ''
 
@@ -34,10 +29,7 @@ export const Footer = () => {
 
           if (item.id === 'dislike') {
             label = {
-              count:
-                wishlistItems && wishlistItems.length
-                  ? wishlistItems.length
-                  : 0,
+              count: wishlistItems && wishlistItems.length ? wishlistItems.length : 0,
               styles: `${styles.label} ${styles.labelBlue}`,
             }
           }

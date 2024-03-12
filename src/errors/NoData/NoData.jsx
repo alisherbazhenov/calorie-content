@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import styles from './NoData.module.scss'
 
-export const NoData = (props) => {
+export const NoData = props => {
   const navigate = useNavigate()
   const backBtn = () => {
     navigate(-1)

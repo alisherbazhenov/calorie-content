@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import styles from './Error.module.scss'
 
-export const Error = (props) => {
+export const Error = props => {
   const navigate = useNavigate()
   const backBtn = () => {
     navigate(-1)

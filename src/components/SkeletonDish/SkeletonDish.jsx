@@ -1,4 +1,3 @@
-/* eslint-disable */
 import styles from './SkeletonDish.module.scss'
 
 export const SkeletonDish = () => (

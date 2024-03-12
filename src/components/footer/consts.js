@@ -5,7 +5,6 @@ import { ReactComponent as WishlistFill } from '../../icons/wishlist2.svg'
 import { ReactComponent as Dislike } from '../../icons/dislike.svg'
 import { ReactComponent as Like } from '../../icons/like.svg'
 
-
 export const items = [
   { id: 'home', icon: <Home />, iconFill: <HomeFill />, to: '/', title: 'Ссылка на главную' },
   {

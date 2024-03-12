@@ -46,7 +46,7 @@ export const Category = () => {
 
   return (
     <ul className={styles.list}>
-      {dishes.map((item) => (
+      {dishes.map(item => (
         <li key={item.id} className={styles.item}>
           <Link className={styles.link} to={item.id}>
             <img className={styles.image} src={item.img} alt={item.alt} />

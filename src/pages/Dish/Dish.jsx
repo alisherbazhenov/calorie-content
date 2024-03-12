@@ -8,29 +8,22 @@ import { LikeButton } from '../../components/LikeButton'
 import { SkeletonDish } from '../../components/SkeletonDish/SkeletonDish'
 import { Error } from '../../errors/Error'
 import { NoData } from '../../errors/NoData/NoData'
-import {
-  addToWishlist,
-  removeWishItem,
-} from '../../features/wishlists/wishSlice'
-import {
-  addToDiet,
-  removeDietItem,
-  removeDish,
-} from '../../features/diets/dietSlice'
+import { addToWishlist, removeWishItem } from '../../features/wishlists/wishSlice'
+import { addToDiet, removeDietItem, removeDish } from '../../features/diets/dietSlice'
 import { DecrementBtn } from '../../components/DecrementBtn/DecrementBtn'
 import { IncrementBtn } from '../../components/IncrementBtn'
 import { DeliteBtn } from '../../components/DeliteBtn/DeliteBtn'
 
 export const Dish = () => {
   const params = useParams()
-  const { wishlistItems } = useSelector((state) => state.wishlists)
-  const { dietItems } = useSelector((state) => state.diets)
+  const { wishlistItems } = useSelector(state => state.wishlists)
+  const { dietItems } = useSelector(state => state.diets)
   const dispatch = useDispatch()
   const [dish, setDish] = useState(null)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-  const isActive = wishlistItems.find((items) => items.id === dish?.id)
-  const dishAdded = dietItems.find((items) => items.id === dish?.id)
+  const isActive = wishlistItems.find(items => items.id === dish?.id)
+  const dishAdded = dietItems.find(items => items.id === dish?.id)
 
   useEffect(() => {
     const getData = async () => {
@@ -62,21 +55,13 @@ export const Dish = () => {
     return <NoData text="Нет данных по блюду..." />
   }
 
-  const handleAddOrRemoveDish = (dish) => {
+  const handleAddOrRemoveDish = dish => {
     if (!isActive) {
       dispatch(addToWishlist(dish))
     } else {
       dispatch(removeWishItem(dish.id))
     }
   }
-
-  // const addToDiets = (item) => {
-  //   if (!dishAdded?.count) {
-  //     dispatch(addToDiet(item))
-  //   } else {
-  //     dispatch(removeDietItem(item.id))
-  //   }
-  // }
 
   return (
     <div className={styles.container}>
@@ -86,10 +71,7 @@ export const Dish = () => {
       <img className={styles.image} src={dish.img} alt={dish.alt} />
       <div className={styles.favorite}>
         <h3 className={styles.subtitle}>Пищевая ценность</h3>
-        <LikeButton
-          isActive={isActive}
-          onClick={() => handleAddOrRemoveDish(dish)}
-        />
+        <LikeButton isActive={isActive} onClick={() => handleAddOrRemoveDish(dish)} />
       </div>
 
       <ul className={styles.list}>
@@ -114,11 +96,7 @@ export const Dish = () => {
           <span className={styles.span}>{dish.fat} гр</span>
         </li>
         <li className={styles.item}>
-          <img
-            className={styles.icon}
-            src="/img/carbohydrates.png"
-            alt="картинка"
-          />
+          <img className={styles.icon} src="/img/carbohydrates.png" alt="картинка" />
           <span className={styles.span}>у</span>
           <span className={styles.span}>{dish.carbohydrates} гр</span>
         </li>
@@ -131,18 +109,13 @@ export const Dish = () => {
       </p>
       <div className={styles.btns}>
         {!dishAdded?.count ? (
-          <button
-            className={styles.incrementButton}
-            onClick={() => dispatch(addToDiet(dish))}
-          >
+          <button className={styles.incrementButton} onClick={() => dispatch(addToDiet(dish))}>
             Добавить в рацион
           </button>
         ) : (
           <div className={styles.btnsCount}>
             <DecrementBtn onClick={() => dispatch(removeDietItem(dish))} />
-            <div className={styles.dishQuantity}>
-              {dishAdded?.count ? dishAdded?.count : 0}
-            </div>
+            <div className={styles.dishQuantity}>{dishAdded?.count ? dishAdded?.count : 0}</div>
             <IncrementBtn onClick={() => dispatch(addToDiet(dish))} />
             <DeliteBtn onClick={() => dispatch(removeDish(dish.id))} />
           </div>

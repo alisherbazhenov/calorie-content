@@ -12,10 +12,10 @@ export const getRestaurants = () => {
   })
 }
 
-export const getRestaurant = (id) => {
+export const getRestaurant = id => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const promise = data.find((item) => item.id === id)
+      const promise = data.find(item => item.id === id)
       resolve(promise)
       // resolve(null)
       // resolve([])
@@ -40,10 +40,9 @@ export const getCategories = ({ restaurantId, categoryId }) => {
 export const getDish = ({ restaurantId, categoryId, dishId }) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const restaurant = data.find((item) => item.id === restaurantId)
-      const categories = restaurant.categories.find(
-        (item) => item.id === categoryId)
-      const dish = categories.dishes.find((item) => item.id === dishId)
+      const restaurant = data.find(item => item.id === restaurantId)
+      const categories = restaurant.categories.find(item => item.id === categoryId)
+      const dish = categories.dishes.find(item => item.id === dishId)
       resolve(dish)
       // resolve(null)
       // resolve([])

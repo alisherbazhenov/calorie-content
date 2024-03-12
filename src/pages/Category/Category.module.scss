@@ -1,49 +1,49 @@
 .list {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 .item {
-	min-height: 200px;
-	overflow: hidden;
-	grid-column: span 2;
-	border-radius: 15px;
-	box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.07);
-	background-color: #d6f7f7;
+  min-height: 200px;
+  overflow: hidden;
+  grid-column: span 2;
+  border-radius: 15px;
+  box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.07);
+  background-color: #d6f7f7;
 }
 
 .item:nth-child(2n) {
-	background-color: #fdd;
+  background-color: #fdd;
 }
 
 .link {
-	width: 100%;
+  width: 100%;
 }
 
 .image {
-	object-fit: cover;
+  object-fit: cover;
 }
 
 .dish {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	gap: 15px;
-	min-height: 100px;
-	margin: 0;
-	padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  min-height: 100px;
+  margin: 0;
+  padding: 10px 15px;
 }
 
 .dishName {
-	color: #474545;
-	font-size: 14px;
-	font-weight: 400;
+  color: #474545;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .dishCalorie {
-	align-self: center;
-	color: #333;
-	font-size: 18px;
-	font-weight: 400;
+  align-self: center;
+  color: #333;
+  font-size: 18px;
+  font-weight: 400;
 }
